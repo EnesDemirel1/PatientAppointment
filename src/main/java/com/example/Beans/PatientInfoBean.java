@@ -52,6 +52,7 @@ public class PatientInfoBean {
         }
 
         public PatientInfoBean build(){
+            //conflict
             PatientInfoBean patientInfoBean = new PatientInfoBean();
             patientInfoBean.name_ = name_;
             patientInfoBean.surname_ = surname_;
@@ -61,11 +62,6 @@ public class PatientInfoBean {
             patientInfoBean.gender_ = gender_;
             return patientInfoBean;
         }
-
-
-
-
-
 
         private String capitalizeFirstLetter(String value){
             return value.substring(0,1).toUpperCase() + value.substring(1).toLowerCase();
