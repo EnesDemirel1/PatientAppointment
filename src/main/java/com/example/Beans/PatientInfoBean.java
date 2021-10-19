@@ -67,9 +67,9 @@ public class PatientInfoBean {
             }
         }
 
-        private boolean checkGender() throws Exception {
+        private void checkGender() throws Exception {
             if (gender_.equals("Male") || gender_.equals("Female") || gender_.equals("Other")) {
-                return true;
+                return;
             }
 
             throw new Exception("Gender should be Male, Female or Other. Nothing else is accepted.");
