@@ -22,12 +22,12 @@ public class PatientInfoBean {
         }
 
         public Builder setName(String name) {
-            name_ = name;
+            name_ = capitalizeFirstLetter(name);
             return this;
         }
 
         public Builder setSurname(String surname) {
-            surname_ = surname;
+            surname_ = capitalizeFirstLetter(surname);
             return this;
         }
 
@@ -42,18 +42,19 @@ public class PatientInfoBean {
         }
 
         public Builder setDepartment(String department) {
-            department_ = department;
+            department_ = capitalizeFirstLetter(department);
             return this;
         }
 
         public Builder setGender(String gender) {
-            gender_ = gender;
+            gender_ = capitalizeFirstLetter(gender);
             return this;
         }
 
         public PatientInfoBean build() throws Exception {
             try {
                 isAllFieldsSet();
+                checkGender();
                 PatientInfoBean patientInfoBean = new PatientInfoBean();
                 patientInfoBean.name_ = name_;
                 patientInfoBean.surname_ = surname_;
@@ -73,6 +74,18 @@ public class PatientInfoBean {
             }
 
             throw new Exception("All fields are required to be filled!");
+        }
+      
+        private void checkGender() throws Exception {
+            if (gender_.equals("Male") || gender_.equals("Female") || gender_.equals("Other")) {
+                return;
+            }
+
+            throw new Exception("Gender should be Male, Female or Other. Nothing else is accepted.");
+        }
+  
+        private String capitalizeFirstLetter(String value){
+            return value.substring(0,1).toUpperCase() + value.substring(1).toLowerCase();
         }
 
     }
