@@ -35,6 +35,20 @@ public class Main {
                             .setSurname("Bar")
                             .setAge(50)
                             .setDepartment("Cardiology")
+                            .setGender("Female")
+                            .setAppointmentDate(new SimpleDateFormat("2021-12-05").format(Calendar.getInstance().getTime()))
+                            .build());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            patientEngine.registerPatient(
+                    new PatientInfoBean.Builder()
+                            .setName("Mark")
+                            .setSurname("Bezos")
+                            .setAge(40)
+                            .setDepartment("orthopedics")
                             .setGender("Male")
                             .setAppointmentDate(new SimpleDateFormat("2021-12-05").format(Calendar.getInstance().getTime()))
                             .build());
@@ -42,6 +56,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        /*
         System.out.println("Total NUmber of Patients Registered: "+patientEngine.getTotalNumberOfPatientsRegistered());
         patientEngine.readAllExistingRecords();
 
@@ -52,6 +67,8 @@ public class Main {
 
         System.out.println("Total NUmber of Patients Registered: "+patientEngine.getTotalNumberOfPatientsRegistered());
         patientEngine.readAllExistingRecords();
+
+         */
     }
 
 }
