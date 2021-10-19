@@ -51,15 +51,28 @@ public class PatientInfoBean {
             return this;
         }
 
-        public PatientInfoBean build(){
-            PatientInfoBean patientInfoBean = new PatientInfoBean();
-            patientInfoBean.name_ = name_;
-            patientInfoBean.surname_ = surname_;
-            patientInfoBean.age_ = age_;
-            patientInfoBean.appointmentDate_ = appointmentDate_;
-            patientInfoBean.department_ = department_;
-            patientInfoBean.gender_ = gender_;
-            return patientInfoBean;
+        public PatientInfoBean build() throws Exception {
+            try {
+                checkGender_();
+                PatientInfoBean patientInfoBean = new PatientInfoBean();
+                patientInfoBean.name_ = name_;
+                patientInfoBean.surname_ = surname_;
+                patientInfoBean.age_ = age_;
+                patientInfoBean.appointmentDate_ = appointmentDate_;
+                patientInfoBean.department_ = department_;
+                patientInfoBean.gender_ = gender_;
+                return patientInfoBean;
+            } catch (Exception e){
+                throw new Exception(e.getMessage());
+            }
+        }
+
+        private boolean checkGender_() throws Exception {
+            if (gender_.equals("Male") || gender_.equals("Female") || gender_.equals("Other")) {
+                return true;
+            }
+
+            throw new Exception("Gender should be Male, Female or Other. Nothing else is accepted.");
         }
 
     }
