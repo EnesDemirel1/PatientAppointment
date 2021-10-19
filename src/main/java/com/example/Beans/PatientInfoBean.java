@@ -22,43 +22,43 @@ public class PatientInfoBean {
         }
 
         public Builder setName(String name) {
-            this.name_ = name;
+            name_ = name;
             return this;
         }
 
         public Builder setSurname(String surname) {
-            this.surname_ = surname;
+            surname_ = surname;
             return this;
         }
 
         public Builder setAge(int age_) {
-            this.age_ = age_;
+            age_ = age_;
             return this;
         }
 
         public Builder setAppointmentDate(String appointmentDate) {
-            this.appointmentDate_ = appointmentDate;
+            appointmentDate_ = appointmentDate;
             return this;
         }
 
         public Builder setDepartment(String department) {
-            this.department_ = department;
+            department_ = department;
             return this;
         }
 
         public Builder setGender(String gender) {
-            this.gender_ = gender;
+            gender_ = gender;
             return this;
         }
 
         public PatientInfoBean build(){
             PatientInfoBean patientInfoBean = new PatientInfoBean();
-            patientInfoBean.name_ = this.name_;
-            patientInfoBean.surname_ = this.surname_;
-            patientInfoBean.age_ = this.age_;
-            patientInfoBean.appointmentDate_ = this.appointmentDate_;
-            patientInfoBean.department_ = this.department_;
-            patientInfoBean.gender_ = this.gender_;
+            patientInfoBean.name_ = name_;
+            patientInfoBean.surname_ = surname_;
+            patientInfoBean.age_ = age_;
+            patientInfoBean.appointmentDate_ = appointmentDate_;
+            patientInfoBean.department_ = department_;
+            patientInfoBean.gender_ = gender_;
             return patientInfoBean;
         }
 

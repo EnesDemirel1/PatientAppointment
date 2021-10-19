@@ -26,7 +26,7 @@ public class PatientEngine {
 
     public void readAllExistingRecords(){
         for(PatientInfoBean patient: patientInformationCheckList){
-            System.out.println("Name: "+patient.getName()+" | Surname: "+patient.getSurname()+" | Age: "+patient.getAge()+" | Department: "+patient.getDepartment()+" | Appointment Day: "+patient.getAppointmentDate());
+            System.out.println("Name: "+patient.getName()+" | Surname: "+patient.getSurname()+" | Age: "+patient.getAge()+" | Gender: "+patient.getGender()+" | Department: "+patient.getDepartment()+" | Appointment Day: "+patient.getAppointmentDate());
         }
     }
 
