@@ -12,7 +12,7 @@ public class PatientInfoBean {
 
         private String name_;
         private String surname_;
-        private int age_;
+        private int age_ = 0;
         private String appointmentDate_;
         private String department_;
         private String gender_;
@@ -31,8 +31,8 @@ public class PatientInfoBean {
             return this;
         }
 
-        public Builder setAge(int age_) {
-            age_ = age_;
+        public Builder setAge(int age) {
+            age_ = age;
             return this;
         }
 
@@ -51,15 +51,28 @@ public class PatientInfoBean {
             return this;
         }
 
-        public PatientInfoBean build(){
-            PatientInfoBean patientInfoBean = new PatientInfoBean();
-            patientInfoBean.name_ = name_;
-            patientInfoBean.surname_ = surname_;
-            patientInfoBean.age_ = age_;
-            patientInfoBean.appointmentDate_ = appointmentDate_;
-            patientInfoBean.department_ = department_;
-            patientInfoBean.gender_ = gender_;
-            return patientInfoBean;
+        public PatientInfoBean build() throws Exception {
+            try {
+                isAllFieldsSet();
+                PatientInfoBean patientInfoBean = new PatientInfoBean();
+                patientInfoBean.name_ = name_;
+                patientInfoBean.surname_ = surname_;
+                patientInfoBean.age_ = age_;
+                patientInfoBean.appointmentDate_ = appointmentDate_;
+                patientInfoBean.department_ = department_;
+                patientInfoBean.gender_ = gender_;
+                return patientInfoBean;
+            } catch (Exception e){
+                throw new Exception(e.getMessage());
+            }
+        }
+
+        private void isAllFieldsSet() throws Exception {
+            if(name_ != null && surname_ != null && age_ > 0 && appointmentDate_ != null && department_ != null && gender_ != null){
+                return;
+            }
+
+            throw new Exception("All fields are required to be filled!");
         }
 
     }
