@@ -53,7 +53,7 @@ public class PatientInfoBean {
 
         public PatientInfoBean build() throws Exception {
             try {
-                checkGender_();
+                checkGender();
                 PatientInfoBean patientInfoBean = new PatientInfoBean();
                 patientInfoBean.name_ = name_;
                 patientInfoBean.surname_ = surname_;
@@ -67,7 +67,7 @@ public class PatientInfoBean {
             }
         }
 
-        private boolean checkGender_() throws Exception {
+        private boolean checkGender() throws Exception {
             if (gender_.equals("Male") || gender_.equals("Female") || gender_.equals("Other")) {
                 return true;
             }
