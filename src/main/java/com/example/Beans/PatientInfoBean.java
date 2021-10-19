@@ -22,12 +22,12 @@ public class PatientInfoBean {
         }
 
         public Builder setName(String name) {
-            name_ = name;
+            name_ = capitalizeFirstLetter(name);
             return this;
         }
 
         public Builder setSurname(String surname) {
-            surname_ = surname;
+            surname_ = capitalizeFirstLetter(surname);
             return this;
         }
 
@@ -42,12 +42,12 @@ public class PatientInfoBean {
         }
 
         public Builder setDepartment(String department) {
-            department_ = department;
+            department_ = capitalizeFirstLetter(department);
             return this;
         }
 
         public Builder setGender(String gender) {
-            gender_ = gender;
+            gender_ = capitalizeFirstLetter(gender);
             return this;
         }
 
@@ -60,6 +60,10 @@ public class PatientInfoBean {
             patientInfoBean.department_ = department_;
             patientInfoBean.gender_ = gender_;
             return patientInfoBean;
+        }
+
+        private String capitalizeFirstLetter(String value){
+            return value.substring(0,1).toUpperCase() + value.substring(1).toLowerCase();
         }
 
     }
