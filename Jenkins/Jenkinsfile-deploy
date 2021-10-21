@@ -1,0 +1,49 @@
+#!/usr/bin/groovy
+
+node{
+
+    def workspace = env.WORKSPACE;
+
+    try{
+
+        stage("Clean Jenkins Workspace"){
+            sh "chown -R jenkins:jenkins ${workspace}";
+            sh "chmod -R 777 ${workspace}";
+            try{
+                sh "rm -rf ${workspace}/*";
+            } catch(err){
+                println err;
+            }
+        }
+
+        stage("Clone Repository"){
+            checkout([
+                $class: 'GitSCM',
+                branches: [[name: "master"]],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [[
+                    $class: 'RelativeTargetDirectory',
+                    relativeTargetDir: "${workspace}"
+                ]],
+                submoduleCfg: [],
+                userRemoteConfigs: [[
+                    credentialsId: 'Github_Credentials',
+                    url: 'git@github.com:EnesDemirel1/PatientAppointment.git'
+                ]]
+            ])
+        }
+
+        stage("Compile Application Code"){
+            sh "mvn clean install -Dmaven.test.skip"
+        }
+
+        stage("Test Application"){
+            sh "mvn clean test"
+        }
+
+    } catch(err){
+        println err;
+        currentBuild.result = "FAILURE"
+        error(err)
+    }
+}
