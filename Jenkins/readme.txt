@@ -6,3 +6,6 @@ Instructions
 4- Add "Jenkinsfile-deploy" as a script to this new job.
 5- Make sure you have Java 11 and Maven installed to the jenkins master node.
 6- Run the build!
+
+Note: Application coded with java 11 and if you get compability error from maven due to this,
+you can change the `maven.compiler.source` in the pom.xml to whatever version it fits you.
