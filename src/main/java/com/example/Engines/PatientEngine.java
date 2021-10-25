@@ -25,8 +25,16 @@ public class PatientEngine {
     }
 
     public void readAllExistingRecords(){
-        for(PatientInfoBean patient: patientInformationCheckList){
-            System.out.println("Name: "+patient.getName()+" | Surname: "+patient.getSurname()+" | Age: "+patient.getAge()+" | Gender: "+patient.getGender()+" | Department: "+patient.getDepartment()+" | Appointment Day: "+patient.getAppointmentDate());
+        if(patientInformationCheckList.size() > 0) {
+            for (PatientInfoBean patient : patientInformationCheckList) {
+                System.out.println("--------------------");
+                System.out.println("Name: " + patient.getName() + " | Surname: " + patient.getSurname() + " | Age: " + patient.getAge() + " | Gender: " + patient.getGender() + " | Department: " + patient.getDepartment() + " | Appointment Day: " + patient.getAppointmentDate());
+                System.out.println("--------------------");
+            }
+        } else {
+            System.out.println("--------------------");
+            System.out.println("No registered patients");
+            System.out.println("--------------------");
         }
     }
 
