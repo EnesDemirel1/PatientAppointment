@@ -19,7 +19,7 @@ public class PatientInfoBeanTest {
                 .setDepartment("Urology")
                 .setGender("Male")
                 //Already past date!
-                .setAppointmentDate(new SimpleDateFormat("1970-11-18").format(Calendar.getInstance().getTime()))
+                .setAppointmentDate(new SimpleDateFormat("2021-11-22").format(Calendar.getInstance().getTime()))
                 .build();
     }
 

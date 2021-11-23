@@ -1,4 +1,7 @@
 package com.example.Beans;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class PatientInfoBean {
     private String name_;
@@ -55,6 +58,8 @@ public class PatientInfoBean {
             try {
                 isAllFieldsSet();
                 checkGender();
+                checkUnrealAge();
+                checkPastDate();
                 PatientInfoBean patientInfoBean = new PatientInfoBean();
                 patientInfoBean.name_ = name_;
                 patientInfoBean.surname_ = surname_;
@@ -86,6 +91,24 @@ public class PatientInfoBean {
   
         private String capitalizeFirstLetter(String value){
             return value.substring(0,1).toUpperCase() + value.substring(1).toLowerCase();
+        }
+
+        private void checkUnrealAge() throws Exception{
+            if(age_ > 0 && age_ < 120){
+                return;
+            }
+
+            throw new Exception("Age must be above 0 or below 120");
+        }
+
+        private void checkPastDate() throws Exception {
+            String now = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+            Date dateToday = new SimpleDateFormat("yyyy-MM-dd").parse(now);
+            Date enteredDate = new SimpleDateFormat("yyyy-MM-dd").parse(appointmentDate_);
+            if(dateToday.compareTo(enteredDate) > 0){
+                throw new Exception("You have entered past date!");
+            }
+            return;
         }
 
     }
